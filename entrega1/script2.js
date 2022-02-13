@@ -25,29 +25,28 @@ function sumaSueldoBruto (sueldoBasico, acumuladorMontoConceptoAdicional) {
     console.log(`Su sueldo bruto es ${sueldoBasico + acumuladorMontoConceptoAdicional}`);
     };
 
-function descuentoAporteJubilatorio (sueldoBruto,APORTE_JUBILATORIO) {
+/*function descuentoAporteJubilatorio (sueldoBruto,APORTE_JUBILATORIO) {
     console.log(`Su descuento por Aporte Jubilatorio es $${sueldoBruto * APORTE_JUBILATORIO}`)
-}
+}*/
 
 sueldoBasico = parseFloat(prompt("Ingrese el monto del sueldo básico"));
 while (isNaN(sueldoBasico) || sueldoBasico <= 0) {
     sueldoBasico = parseFloat(prompt("Ingrese un monto numérico y mayor a cero"));
 }
-
-console.log(`El sueldo básico ingresado es $${sueldoBasico}`);
+console.log(`Su sueldo básico es $${sueldoBasico}`);
 
 confirmacion = prompt("¿Desea agregar otro concepto o adicional?");
 
 while (confirmacion == "si") {
     nombreConceptoAdicional = prompt("Ingrese nombre del concepto o adicional");
-    console.log(`Ingresó el concepto "${nombreConceptoAdicional}"`);
+    console.log(`Agregó el concepto ${nombreConceptoAdicional}`);
 
     montoConceptoAdicional = parseFloat(prompt("Ingrese el monto del concepto o adicional"));
 
-    console.log(`Por un monto de $${montoConceptoAdicional}`);
+while (isNaN(montoConceptoAdicional) || montoConceptoAdicional < 0) {
+    montoConceptoAdicional = parseFloat(prompt("Ingrese un monto numérico y mayor a cero"));
 
-    while (isNaN(montoConceptoAdicional) || montoConceptoAdicional < 0) {
-        montoConceptoAdicional = parseFloat(prompt("Ingrese un monto numérico y mayor a cero"));
+    console.log(`El monto es $${montoConceptoAdicional}`);
 }
 
 acumuladorMontoConceptoAdicional = acumuladorMontoConceptoAdicional + montoConceptoAdicional;
@@ -55,18 +54,18 @@ acumuladorMontoConceptoAdicional = acumuladorMontoConceptoAdicional + montoConce
 confirmacion = prompt("¿Desea agregar otro concepto o adicional?");
 }
 
-console.log(`Sueldo básico: $${sueldoBasico}`);
-console.log(`Total adicionales y otros conceptos $${acumuladorMontoConceptoAdicional}`);
+console.log(`Su sueldo básico es ${sueldoBasico}`);
+console.log(`Sus adicionales son ${acumuladorMontoConceptoAdicional}`);
 
-sueldoBruto = sumaSueldoBruto(sueldoBasico, acumuladorMontoConceptoAdicional);
+sumaSueldoBruto(sueldoBasico, acumuladorMontoConceptoAdicional);
 
-console.log("Sus descuentos son:")
+/*console.log("Sus descuentos son:")
 console.log(`Aporte jubilatorio ${APORTE_JUBILATORIO * 100}%`)
 descuentoAporteJubilatorio()
 console.log(`El descuento es de $${APORTE_JUBILATORIO * 100}`)
 console.log(`Aporte obra social ${APORTE_OBRA_SOCIAL * 100}%`)
 console.log(`Aporte INSSJP-PAMI ${APORTE_INSSJP_PAMI * 100}%`)
-/*
+
 otrosDescuentos = prompt("Desea agregar otros descuentos?");
 
 while (afiliacionSindical !== "si" || afiliacionSindical !== "no") {
