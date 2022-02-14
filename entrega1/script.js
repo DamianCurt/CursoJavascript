@@ -13,6 +13,7 @@ let confirmacionOtrosDescuentos;
 let nombreOtrosDescuentos;
 let montoOtrosDescuentos = 0;
 let acumuladorMontoOtrosDescuentos = 0;
+let montoTotalDescuentos =0;
 let sueldoNeto = 0;
 let cantidadSueldos = 0;
 let concepto;
@@ -32,6 +33,7 @@ const productoDosNumeros = (num1, num2) => num1 * num2;
 const sumaCuatroNumeros = (desc1, desc2, desc3, desc4) => desc1 + desc2 + desc3 + desc4;
 
 //inicio
+
 sueldoBasico = parseFloat(prompt("Ingrese el monto del sueldo básico"));
 while (isNaN(sueldoBasico) || sueldoBasico <= 0) {
     sueldoBasico = parseFloat(prompt("Ingrese un monto numérico y mayor a cero"));
@@ -53,7 +55,7 @@ while (confirmacionConceptoAdicional == "si") {
         montoConceptoAdicional = parseFloat(prompt("Ingrese un monto numérico y mayor a cero"));
     }
 
-    acumuladorMontoConceptoAdicional = acumuladorMontoConceptoAdicional + montoConceptoAdicional;
+    acumuladorMontoConceptoAdicional = sumaDosNumeros(acumuladorMontoConceptoAdicional, montoConceptoAdicional);
 
     confirmacionConceptoAdicional = prompt("¿Desea agregar otro concepto o adicional?");
 }
@@ -89,7 +91,7 @@ while (confirmacionOtrosDescuentos == "si") {
         montoOtrosDescuentos = parseFloat(prompt("Ingrese un monto numérico y mayor a cero"));
     }
 
-    acumuladorMontoOtrosDescuentos = acumuladorMontoOtrosDescuentos + montoOtrosDescuentos;
+    acumuladorMontoOtrosDescuentos = sumaDosNumeros (acumuladorMontoOtrosDescuentos, montoOtrosDescuentos);
 
     confirmacionOtrosDescuentos = prompt("¿Desea agregar otro descuento?");
 }
