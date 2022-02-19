@@ -1,5 +1,14 @@
 //variables
 
+let id = 0;
+let entidad;
+let valorEstadoActivoEmpleado = true;
+let apellido;
+let nombre;
+let puesto;
+let seniority;
+let sector;
+let convenioSindical;
 let sueldoBasico = 0;
 let confirmacionConceptoAdicional;
 let nombreConceptoAdicional;
@@ -13,12 +22,9 @@ let confirmacionOtrosDescuentos;
 let nombreOtrosDescuentos;
 let montoOtrosDescuentos = 0;
 let acumuladorMontoOtrosDescuentos = 0;
-let montoTotalDescuentos =0;
+let montoTotalDescuentos = 0;
 let sueldoNeto = 0;
 let cantidadSueldos = 0;
-let concepto;
-let afiliacionSindical;
-let porcentajeCuotaSindical;
 
 //constantes
 
@@ -31,8 +37,32 @@ const APORTE_INSSJP_PAMI = 0.03;
 const sumaDosNumeros = (num1, num2) => num1 + num2;
 const productoDosNumeros = (num1, num2) => num1 * num2;
 const sumaCuatroNumeros = (desc1, desc2, desc3, desc4) => desc1 + desc2 + desc3 + desc4;
+function estadoEmpleadoActivo(activo) {
+    return (estado) => estado == activo;
+}
+let estadoEmpleado = estadoEmpleadoActivo("activo")
 
 //inicio
+
+entidad = (prompt("Ingrese la entidad, empresa u organización"));
+console.log(`Entidad ${entidad}`);
+
+valorEstadoActivoEmpleado = estadoEmpleado((prompt("Ingrese si el empleado está activo o inactivo")));
+while (estadoEmpleado != "activo" && estadoEmpleado != "inactivo") {
+    estadoEmpleado = (prompt("Ingrese activo o inactivo según corresponda"));
+}
+
+apellido = (prompt("Ingrese el o los apellidos"));
+
+nombre = (prompt("Ingrese el o los nombres"));
+
+puesto = (prompt("Ingrese el puesto"));
+
+seniority = (prompt("Ingrese el seniority"));
+
+sector = (prompt("Ingrese el sector"));
+
+convenioSindical = (prompt("Ingrese el Convenio Sindical"));
 
 sueldoBasico = parseFloat(prompt("Ingrese el monto del sueldo básico"));
 while (isNaN(sueldoBasico) || sueldoBasico <= 0) {
@@ -63,15 +93,15 @@ while (confirmacionConceptoAdicional == "si") {
 console.log(`Sueldo básico: $${sueldoBasico}`);
 console.log(`Total adicionales y otros conceptos $${acumuladorMontoConceptoAdicional}`);
 
-sueldoBruto = sumaDosNumeros (sueldoBasico, acumuladorMontoConceptoAdicional);
+sueldoBruto = sumaDosNumeros(sueldoBasico, acumuladorMontoConceptoAdicional);
 console.log(`El sueldo bruto es ${sueldoBruto}`);
 
 console.log("Los descuentos son:");
 
-montoAporteJubilatorio = productoDosNumeros (sueldoBruto, APORTE_JUBILATORIO);
+montoAporteJubilatorio = productoDosNumeros(sueldoBruto, APORTE_JUBILATORIO);
 console.log(`Aporte Jubilatorio del 11% del Sueldo Bruto $${montoAporteJubilatorio}`);
 
-montoAporteObraSocial = productoDosNumeros (sueldoBruto, APORTE_OBRA_SOCIAL);
+montoAporteObraSocial = productoDosNumeros(sueldoBruto, APORTE_OBRA_SOCIAL);
 console.log(`Aporte Obra Social del 3% del Sueldo Bruto $${montoAporteObraSocial}`);
 
 montoAporteInssjpPami = productoDosNumeros(sueldoBruto, APORTE_INSSJP_PAMI);
@@ -91,15 +121,33 @@ while (confirmacionOtrosDescuentos == "si") {
         montoOtrosDescuentos = parseFloat(prompt("Ingrese un monto numérico y mayor a cero"));
     }
 
-    acumuladorMontoOtrosDescuentos = sumaDosNumeros (acumuladorMontoOtrosDescuentos, montoOtrosDescuentos);
+    acumuladorMontoOtrosDescuentos = sumaDosNumeros(acumuladorMontoOtrosDescuentos, montoOtrosDescuentos);
 
     confirmacionOtrosDescuentos = prompt("¿Desea agregar otro descuento?");
 }
 
-montoTotalDescuentos = sumaCuatroNumeros (montoAporteJubilatorio, montoAporteObraSocial, montoAporteInssjpPami, acumuladorMontoOtrosDescuentos);
+montoTotalDescuentos = sumaCuatroNumeros(montoAporteJubilatorio, montoAporteObraSocial, montoAporteInssjpPami, acumuladorMontoOtrosDescuentos);
 console.log(`Total descuentos $${montoTotalDescuentos}`);
 
-sueldoNeto = sumaDosNumeros (sueldoBruto, -montoTotalDescuentos)
+sueldoNeto = sumaDosNumeros(sueldoBruto, -montoTotalDescuentos)
 console.log(`El sueldo neto es $${sueldoNeto}`);
 
+//Elementos
 
+const empleado1 = new Empleado(
+    1, "Empresa1 SA", true, "Apellido1", "Nombre1", "Puesto1", "Seniority1", "Sector1", "Convenio Sindical1" , 70000, 30000, 100000, 17000, 83000);
+
+const empleado2 = new Empleado(2, "Empresa1 SA", false, "Apellido2", "Nombre2", "Puesto2", "Seniority2", "Sector2", "Convenio Sindical2" , 140000, 60000, 200000, 34000, 166000);
+
+const empleado3 = new Empleado(2, "Empresa2 SA", true, "Apellido3", "Nombre3", "Puesto3", "Seniority3", "Sector3", "Convenio Sindical2" , 200000, 90000, 200000, 34000, 166000);
+
+console.log(empleado1.sueldoBasico);
+empleado1.aumentarSueldoBasico(1.20);
+console.log(empleado1.sueldoBasico);
+console.log(empleado1.seniority);
+empleado1.cambiarSeniority("Senior");
+console.log(empleado1.seniority);
+
+for(let i = 0; Empleado.length; i++) {
+    console.log(Empleado[i])
+}
