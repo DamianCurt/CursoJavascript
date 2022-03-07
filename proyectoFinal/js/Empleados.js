@@ -1,3 +1,91 @@
+//variables
+
+
+let userName;
+let password;
+let bienvenidoUsuario;
+let id = 0;
+let entidad;
+let activo = true;
+let cuil = 0;
+let apellido;
+let nombre;
+let puesto;
+let seniority;
+let sector;
+let convenioSindical;
+let sueldoBasico = 0;
+let confirmacionConceptoAdicional;
+let nombreConceptoAdicional;
+let montoConceptoAdicional = 0;
+let acumuladorMontoConceptoAdicional = 0;
+let sueldoBruto = 0;
+let montoAporteJubilatorio = 0;
+let montoAporteObraSocial = 0;
+let montoAporteInssjpPami = 0;
+let confirmacionOtrosDescuentos;
+let nombreOtrosDescuentos;
+let montoOtrosDescuentos = 0;
+let acumuladorMontoOtrosDescuentos = 0;
+let montoTotalDescuentos = 0;
+let sueldoNeto = 0;
+let cantidadSueldos = 0;
+
+//constantes
+
+const APORTE_JUBILATORIO = 0.11;
+const APORTE_OBRA_SOCIAL = 0.03;
+const APORTE_INSSJP_PAMI = 0.03;
+
+//funciones
+
+const sumaDosNumeros = (num1, num2) => num1 + num2;
+const productoDosNumeros = (num1, num2) => num1 * num2;
+const sumaCuatroNumeros = (desc1, desc2, desc3, desc4) => desc1 + desc2 + desc3 + desc4;
+
+class user {
+    constructor(userName, email, password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
+    loguearse() {
+        console.log(`${this.user} usuario gerado correctamente`);
+    }
+}
+
+let arrayUsers = [];
+
+if (localStorage.getItem('users')) {
+    arrayUsers = JSON.parse(localStorage.getItem('users'))
+}
+else {
+    localStorage.setItem('users', JSON.stringify(arrayUsers));
+}
+
+let formulario = document.getElementById("idForm");
+
+formulario.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    let userName = document.getElementById('idUsuario').value;
+    let email = document.getElementById('idEmail').value;
+    let password = document.getElementById('idPassword').value;
+
+    if (!arrayUsers.some(usaurioEnArray => usaurioEnArray.email == email)) {
+        const usuario = new user(userName, email, password);
+        arrayUsers.push(usuario)
+        localStorage.setItem('usuarios', JSON.stringify(arrayUsers))
+        formulario.reset()
+    }
+})
+
+
+
+let divBienvenidoUsuario = document.getElementById("divBienvenidoUsuario");
+
+divBienvenidoUsuario.innerText = `Hola ${userName} Has ingresado a tu nómina de empleados`;
+
 class Empleado {
     constructor(id, entidad, activo, cuil, apellido, nombre, puesto, seniority, sector, convenioSindical, sueldoBasico, /*acumuladorMontoConceptoAdicional, sueldoBruto, montoTotalDescuentos, sueldoNeto*/) {
         this.id = id;
@@ -11,12 +99,12 @@ class Empleado {
         this.sector = sector;
         this.convenioSindical = convenioSindical;
         this.sueldoBasico = sueldoBasico;
-/*        
-        this.acumuladorMontoConceptoAdicional = acumuladorMontoConceptoAdicional;
-        this.sueldoBruto = sueldoBruto;
-        this.montoTotalDescuentos = montoTotalDescuentos;
-        this.sueldoNeto = sueldoNeto;
-*/
+        /*        
+                this.acumuladorMontoConceptoAdicional = acumuladorMontoConceptoAdicional;
+                this.sueldoBruto = sueldoBruto;
+                this.montoTotalDescuentos = montoTotalDescuentos;
+                this.sueldoNeto = sueldoNeto;
+        */
     }
 
     cambiarActivo(nuevoEstadoActivo) {
@@ -54,29 +142,23 @@ const empleado1 = new Empleado(id, entidad, activo, apellido, nombre, puesto, se
 const empleado2 = new Empleado(id, entidad, activo, cuil, apellido, nombre, puesto, seniority, sector, convenioSindical, sueldoBasico);
 */
 
-const empleado1 = new Empleado(1, "Empresa1 SA", true, 12345678911,"Apellido1", "Nombre1", "Puesto1", "Seniority1", "Sector1", "Convenio Sindical1" , 70000);
+const empleado1 = new Empleado(1, "Empresa1 SA", true, 12345678911, "Apellido1", "Nombre1", "Puesto1", "Seniority1", "Sector1", "Convenio Sindical1", 70000);
 
-const empleado2 = new Empleado(2, "Empresa1 SA", false, 11987654321,"Apellido2", "Nombre2", "Puesto2", "Seniority2", "Sector2", "Convenio Sindical2" , 140000);
+const empleado2 = new Empleado(2, "Empresa1 SA", false, 11987654321, "Apellido2", "Nombre2", "Puesto2", "Seniority2", "Sector2", "Convenio Sindical2", 140000);
 
-const empleado3 = new Empleado(2, "Empresa2 SA", true, 12345678910,"Apellido3", "Nombre3", "Puesto3", "Seniority3", "Sector3", "Convenio Sindical2" , 200000);
+const empleado3 = new Empleado(2, "Empresa2 SA", true, 12345678910, "Apellido3", "Nombre3", "Puesto3", "Seniority3", "Sector3", "Convenio Sindical2", 200000);
 
 const empleados = [empleado1, empleado2, empleado3];
 
+console.log(empleados);
+
 const nomina = [];
-
-let divBienvenidoUsuario = document.getElementById(`divBienvenidoUsuario`);
-
-const bienvenido = () => {
-    let nombreUsuario = prompt("Ingrese su nombre de usuario")
-    divBienvenidoUsuario.innerHTML = <h2>"Hola ${nombreUsuario.toUpperCase}! Has ingresado a tu nómina de empleados"</h2>;
-}
 
 let divEmpleados = document.getElementById(`divEmpleados`);
 
-
 empleados.forEach(empleadoEnArray => {
     divEmpleados.innerHTML += `
-    <div id="${empleadoEnArray.entidad}--empleado--${empleadoEnArray.id}" class="empleado--container">
+    <div id="${empleadoEnArray.entidad}--empleado--${empleadoEnArray.id}" class="container-fluid ">
     <p>Entidad: ${empleadoEnArray.entidad}</p>
     <p>Activo: ${empleadoEnArray.activo}</p>
     <p>CUIL: ${empleadoEnArray.cuil}</p>

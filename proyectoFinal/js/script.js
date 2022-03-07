@@ -1,43 +1,3 @@
-//variables
-
-let id = 0;
-let entidad;
-let activo = true;
-let cuil = 0;
-let apellido;
-let nombre;
-let puesto;
-let seniority;
-let sector;
-let convenioSindical;
-let sueldoBasico = 0;
-let confirmacionConceptoAdicional;
-let nombreConceptoAdicional;
-let montoConceptoAdicional = 0;
-let acumuladorMontoConceptoAdicional = 0;
-let sueldoBruto = 0;
-let montoAporteJubilatorio = 0;
-let montoAporteObraSocial = 0;
-let montoAporteInssjpPami = 0;
-let confirmacionOtrosDescuentos;
-let nombreOtrosDescuentos;
-let montoOtrosDescuentos = 0;
-let acumuladorMontoOtrosDescuentos = 0;
-let montoTotalDescuentos = 0;
-let sueldoNeto = 0;
-let cantidadSueldos = 0;
-
-//constantes
-
-const APORTE_JUBILATORIO = 0.11;
-const APORTE_OBRA_SOCIAL = 0.03;
-const APORTE_INSSJP_PAMI = 0.03;
-
-//funciones
-
-const sumaDosNumeros = (num1, num2) => num1 + num2;
-const productoDosNumeros = (num1, num2) => num1 * num2;
-const sumaCuatroNumeros = (desc1, desc2, desc3, desc4) => desc1 + desc2 + desc3 + desc4;
 
 //inicio
 
@@ -50,10 +10,9 @@ function estadoEmpleadoActivo(activo) {
 let estadoEmpleado = estadoEmpleadoActivo("activo");
 
 estadoEmpleado((prompt("Ingrese si el empleado está activo o inactivo")));
-while (estadoEmpleado !== "activo" && estadoEmpleado !== "inactivo") {
+while (estadoEmpleado != "activo" && estadoEmpleado != "inactivo") {
     estadoEmpleado = (prompt("Ingrese activo o inactivo según corresponda"));
 }
-
 
 cuil = parseInt(prompt("Ingrese el CUIL del empleado"));
 
@@ -137,8 +96,6 @@ console.log(`Total descuentos $${montoTotalDescuentos}`);
 sueldoNeto = sumaDosNumeros(sueldoBruto, -montoTotalDescuentos)
 console.log(`El sueldo neto es $${sueldoNeto}`);
 
-
-
 console.log(empleado1.sueldoBasico);
 empleado1.aumentarSueldoBasico(1.20);
 console.log(empleado1.sueldoBasico);
@@ -146,6 +103,6 @@ console.log(empleado1.seniority);
 empleado1.cambiarSeniority("Senior");
 console.log(empleado1.seniority);
 
-for(let i = 0; Empleado.length; i++) {
+for (let i = 0; Empleado.length; i++) {
     console.log(Empleado[i])
 }
