@@ -50,37 +50,67 @@ class user {
         this.password = password;
     }
     loguearse() {
-        console.log(`${this.user} usuario gerado correctamente`);
+        console.log(`usuario ${this.user} gerado correctamente`);
     }
 }
 
 let arrayUsers = [];
 
-if (localStorage.getItem('users')) {
-    arrayUsers = JSON.parse(localStorage.getItem('users'))
-}
-else {
-    localStorage.setItem('users', JSON.stringify(arrayUsers));
+if (localStorage.getItem('usuarios')) {
+    console.log(`JSON.parse(localStorage.getItem('usuarios')) ${localStorage.getItem('usuarios')}`);
+    arrayUsers = JSON.parse(localStorage.getItem('usuarios'));
+    console.log(`arrayUsers ${JSON.stringify(arrayUsers)}`);
+} else {
+    console.log(`localStorage.setItem('usuarios', JSON.stringify(arrayUsers)) ${JSON.stringify(arrayUsers)}`);
+    localStorage.setItem('usuarios', JSON.stringify(arrayUsers));
 }
 
-let formulario = document.getElementById("idForm");
+let formularioUsuarioNuevo = document.getElementById("idUsuarioNuevo");
+let botonGenerarUsuario = document.getElementById("idBotonGenerarUsuario")
+let divestadoUsuario = document.getElementById("idEstadoUsuario")
 
-formulario.addEventListener('submit', (e) => {
+formularioUsuarioNuevo.addEventListener('submit', (e) => {
     e.preventDefault()
 
     let userName = document.getElementById('idUsuario').value;
     let email = document.getElementById('idEmail').value;
     let password = document.getElementById('idPassword').value;
 
-    if (!arrayUsers.some(usaurioEnArray => usaurioEnArray.email == email)) {
+    if (!arrayUsers.some(usaurioEnArray => usaurioEnArray.email == email || usaurioEnArray.userName == userName)) {
         const usuario = new user(userName, email, password);
         arrayUsers.push(usuario)
         localStorage.setItem('usuarios', JSON.stringify(arrayUsers))
-        formulario.reset()
-    }
+        formularioUsuarioNuevo.reset()
+        idEstadoUsuario.innerHTML = `<div id="idEstadoUsuario" class="alert alert-success" role="alert">
+        <p>Usuario generado correctamente. Inicie sesión en su nómina.</p></div>
+        `;
+    } else {
+        idEstadoUsuario.innerHTML = `<div id="idEstadoUsuario" class="alert alert-warning" role="alert">
+    <p>Nombre de usuaio o mail existentes. Ingrese otros valores.</p></div>`}
 })
 
+let formularioInicioSesion = document.getElementById("idLogUsuario");
+let botonLogSesion = document.getElementById("idLogSesion");
+/*let divestadoUsuario = document.getElementById("idEstadoUsuario")*/
 
+formularioInicioSesion.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    let userName = document.getElementById('idLogUsuario').value;
+    let password = document.getElementById('idLogPassword').value;
+    let idEstadoSesion = document.getElementById("idEstadoSesion");
+
+    if (arrayUsers.some(usaurioEnArray => usaurioEnArray.password == password && usaurioEnArray.userName == userName)) {
+        console.log("1")
+        formularioInicioSesion.reset()
+        {idEstadoSesion.innerHTML = `<div class="alert alert-success" role="alert">
+        <p>Hola ${userName}! Ingresaste a tu nómina.</p></div>`}
+    } else {
+        console.log("2")
+        idEstadoSesion.innerHTML = `<div class="alert alert-warning" role="alert">
+        <p>Usuario o contraseña incorrectos</p></div>`
+    }
+})
 
 let divBienvenidoUsuario = document.getElementById("divBienvenidoUsuario");
 

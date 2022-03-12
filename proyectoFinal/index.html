@@ -20,9 +20,9 @@
         content="trabajo, empresa, empresas, capacitación, formación, laboral, asesoramiento, consultoría, comunicación institucional, conflicto, laborales, plan de mejoras, plan de carrera, actualidad, recursos humanos, rrhh, relaciones laborales, relaciones del trabajo, trabajador, productividad">
 </head>
 
-<body>
+<body class="container-fluid">
     <div class="container-fluid">
-        <form class="row g-3" id="idForm">
+        <form class="row g-3" id="idUsuarioNuevo">
             <div class="col-auto">
                 <label for="idUsuario" class="visually-hidden">Usuario</label>
                 <input id="idUsuario" class="form-control" type="text" placeholder="Usuario" aria-label="nombreUsuario"
@@ -35,21 +35,43 @@
             </div>
             <div class="col-auto">
                 <label for="idContraseña" class="visually-hidden">Contraseña</label>
-                <input type="password" class="form-control" id="idPassword" placeholder="Contraseña"
-                    name="contraseña">
+                <input type="password" class="form-control" id="idPassword" placeholder="Contraseña" name="contraseña">
             </div>
             <div class="col-auto">
-                <button type="submit" id="idBotonCrearUsuario" class="btn btn-primary mb-3">Crear usuario</button>
+                <button type="submit" id="idBotonGenerarUsuario" class="btn btn-primary mb-3">Generar usuario</button>
             </div>
         </form>
 
-        <h2 id="divBienvenidoUsuario"></h2>
-    </div>
-    <div id="divEmpleados" class="container-fluid"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script src="js/Empleados.js"></script>
+        <div id="idEstadoUsuario"></div>
+
+        <div>
+            <form class="row g-3" id="idLogUsuario">
+                <div class="col-auto">
+                    <label for="idLogUsuario" class="visually-hidden">Usuario</label>
+                    <input id="idLogUsuario" class="form-control" type="text" placeholder="Usuario"
+                        aria-label="nombreUsuario" name="idLogUsuario">
+                </div>
+
+                <div class="col-auto">
+                    <label for="idLogPassword" class="visually-hidden">Contraseña</label>
+                    <input type="password" class="form-control" id="idLogPassword" placeholder="Contraseña"
+                        name="logPassword">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" id="idLogSesion" class="btn btn-primary mb-3">Ingresar a Mi nómina</button>
+                </div>
+            </form>
+            <div id="idEstadoSesion"></div>
+
+            <h2 id="divBienvenidoUsuario"></h2>
+        </div>
+
+        <div id="divEmpleados" class="container-fluid"></div>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="js/Empleados.js"></script>
 
 </body>
 
