@@ -57,19 +57,16 @@ class user {
 let arrayUsers = [];
 
 if (localStorage.getItem('usuarios')) {
-    console.log(`JSON.parse(localStorage.getItem('usuarios')) ${localStorage.getItem('usuarios')}`);
     arrayUsers = JSON.parse(localStorage.getItem('usuarios'));
-    console.log(`arrayUsers ${JSON.stringify(arrayUsers)}`);
 } else {
-    console.log(`localStorage.setItem('usuarios', JSON.stringify(arrayUsers)) ${JSON.stringify(arrayUsers)}`);
     localStorage.setItem('usuarios', JSON.stringify(arrayUsers));
 }
 
-let formularioUsuarioNuevo = document.getElementById("idUsuarioNuevo");
-let botonGenerarUsuario = document.getElementById("idBotonGenerarUsuario")
-let divestadoUsuario = document.getElementById("idEstadoUsuario")
+let divFormularioUsuarioNuevo = document.getElementById("idUsuarioNuevo");
+let divBotonGenerarUsuario = document.getElementById("idBotonGenerarUsuario")
+let divEstadoUsuario = document.getElementById("idEstadoUsuario")
 
-formularioUsuarioNuevo.addEventListener('submit', (e) => {
+divFormularioUsuarioNuevo.addEventListener('submit', (e) => {
     e.preventDefault()
 
     let userName = document.getElementById('idUsuario').value;
@@ -78,43 +75,49 @@ formularioUsuarioNuevo.addEventListener('submit', (e) => {
 
     if (!arrayUsers.some(usaurioEnArray => usaurioEnArray.email == email || usaurioEnArray.userName == userName)) {
         const usuario = new user(userName, email, password);
-        arrayUsers.push(usuario)
-        localStorage.setItem('usuarios', JSON.stringify(arrayUsers))
-        formularioUsuarioNuevo.reset()
-        idEstadoUsuario.innerHTML = `<div id="idEstadoUsuario" class="alert alert-success" role="alert">
+        arrayUsers.push(usuario);
+        localStorage.setItem('usuarios', JSON.stringify(arrayUsers));
+        divFormularioUsuarioNuevo.reset();
+        divEstadoUsuario.innerHTML = `<div id="idEstadoUsuario" class="alert alert-success" role="alert">
         <p>Usuario generado correctamente. Inicie sesión en su nómina.</p></div>
         `;
     } else {
-        idEstadoUsuario.innerHTML = `<div id="idEstadoUsuario" class="alert alert-warning" role="alert">
+        divEstadoUsuario.innerHTML = `<div id="idEstadoUsuario" class="alert alert-warning" role="alert">
     <p>Nombre de usuaio o mail existentes. Ingrese otros valores.</p></div>`}
 })
 
-let formularioInicioSesion = document.getElementById("idLogUsuario");
-let botonLogSesion = document.getElementById("idLogSesion");
-/*let divestadoUsuario = document.getElementById("idEstadoUsuario")*/
+let divFormularioInicioSesion = document.getElementById("idFormLogUsuario");
+let divBotonLogSesion = document.getElementById("idBotonLogSesion");
+let divEstadoLogInUsuario = document.getElementById("idEstadoLogInUsuario");
 
-formularioInicioSesion.addEventListener('submit', (e) => {
+divFormularioInicioSesion.addEventListener('submit', (e) => {
     e.preventDefault()
 
     let userName = document.getElementById('idLogUsuario').value;
     let password = document.getElementById('idLogPassword').value;
-    let idEstadoSesion = document.getElementById("idEstadoSesion");
 
-    if (arrayUsers.some(usaurioEnArray => usaurioEnArray.password == password && usaurioEnArray.userName == userName)) {
-        console.log("1")
-        formularioInicioSesion.reset()
-        {idEstadoSesion.innerHTML = `<div class="alert alert-success" role="alert">
-        <p>Hola ${userName}! Ingresaste a tu nómina.</p></div>`}
-    } else {
-        console.log("2")
-        idEstadoSesion.innerHTML = `<div class="alert alert-warning" role="alert">
-        <p>Usuario o contraseña incorrectos</p></div>`
-    }
+    const findUser = arrayUsers.find(usuario => usuario.userName === userName)
+
+    if(findUser.password === password) {
+        document.getElementById("idUsuarioNuevo").style.display = "none";
+        document.getElementById("idBotonGenerarUsuario").style.display = "none";
+        document.getElementById("idEstadoUsuario").style.display = "none";
+        document.getElementById("idFormLogUsuario").style.display = "none";
+        document.getElementById("idBotonLogSesion").style.display = "none";
+        divEstadoLogInUsuario.innerHTML = `<div id="idEstadoLogInUsuario" class="alert alert-success " role="alert">
+        <p>Hola ${userName.toUpperCase()} has ingresado a tu portal de empleados</p></div>
+        `;
+    } 
+        else {
+            divFormularioInicioSesion.reset()
+            divEstadoUsuario.innerHTML = `<div id="idEstadoLogInUsuario" class="alert alert-warning" role="alert">
+    <p>Usuaio o contraseña incorrectos. Vuelva a intentarlo.</p></div>`;
+    } 
 })
 
 let divBienvenidoUsuario = document.getElementById("divBienvenidoUsuario");
 
-divBienvenidoUsuario.innerText = `Hola ${userName} Has ingresado a tu nómina de empleados`;
+divBienvenidoUsuario.innerText = `Hola ${user.userName} Has ingresado a tu nómina de empleados`;
 
 class Empleado {
     constructor(id, entidad, activo, cuil, apellido, nombre, puesto, seniority, sector, convenioSindical, sueldoBasico, /*acumuladorMontoConceptoAdicional, sueldoBruto, montoTotalDescuentos, sueldoNeto*/) {
@@ -182,7 +185,7 @@ const empleados = [empleado1, empleado2, empleado3];
 
 console.log(empleados);
 
-const nomina = [];
+const nominaEmpleados = [];
 
 let divEmpleados = document.getElementById(`divEmpleados`);
 
