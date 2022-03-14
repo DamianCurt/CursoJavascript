@@ -112,12 +112,13 @@ divFormularioInicioSesion.addEventListener('submit', (e) => {
             divFormularioInicioSesion.reset()
             divEstadoUsuario.innerHTML = `<div id="idEstadoLogInUsuario" class="alert alert-warning" role="alert">
     <p>Usuaio o contraseña incorrectos. Vuelva a intentarlo.</p></div>`;
-    } 
+    }
+
+    let divBienvenidoUsuario = document.getElementById("divBienvenidoUsuario");
+    divBienvenidoUsuario.innerHTML = `<h2>${userName.toUpperCase()} comienza administrar tu nómina de empleados</h2>`;
 })
 
-let divBienvenidoUsuario = document.getElementById("divBienvenidoUsuario");
 
-divBienvenidoUsuario.innerText = `Hola ${user.userName} Has ingresado a tu nómina de empleados`;
 
 class Empleado {
     constructor(id, entidad, activo, cuil, apellido, nombre, puesto, seniority, sector, convenioSindical, sueldoBasico, /*acumuladorMontoConceptoAdicional, sueldoBruto, montoTotalDescuentos, sueldoNeto*/) {
