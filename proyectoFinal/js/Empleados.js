@@ -56,18 +56,14 @@ class user {
 
 let arrayUsers = [];
 
-if (localStorage.getItem('usuarios')) {
-    arrayUsers = JSON.parse(localStorage.getItem('usuarios'));
-} else {
-    localStorage.setItem('usuarios', JSON.stringify(arrayUsers));
-}
+arrayUsers = localStorage.getItem('usuarios') ? JSON.parse(localStorage.getItem('usuarios')) : localStorage.setItem('usuarios', JSON.stringify(arrayUsers));
 
 let divFormularioUsuarioNuevo = document.getElementById("idUsuarioNuevo");
-let divBotonGenerarUsuario = document.getElementById("idBotonGenerarUsuario")
-let divEstadoUsuario = document.getElementById("idEstadoUsuario")
+let divBotonGenerarUsuario = document.getElementById("idBotonGenerarUsuario");
+let divEstadoUsuario = document.getElementById("idEstadoUsuario");
 
 divFormularioUsuarioNuevo.addEventListener('submit', (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     let userName = document.getElementById('idUsuario').value;
     let email = document.getElementById('idEmail').value;
@@ -83,7 +79,8 @@ divFormularioUsuarioNuevo.addEventListener('submit', (e) => {
         `;
     } else {
         divEstadoUsuario.innerHTML = `<div id="idEstadoUsuario" class="alert alert-warning" role="alert">
-    <p>Nombre de usuaio o mail existentes. Ingrese otros valores.</p></div>`}
+    <p>Nombre de usuaio o mail existentes. Ingrese otros valores.</p></div>`;
+    }
 })
 
 let divFormularioInicioSesion = document.getElementById("idFormLogUsuario");
@@ -96,7 +93,7 @@ divFormularioInicioSesion.addEventListener('submit', (e) => {
     let userName = document.getElementById('idLogUsuario').value;
     let password = document.getElementById('idLogPassword').value;
 
-    const findUser = arrayUsers.find(usuario => usuario.userName === userName)
+    const findUser = arrayUsers.find(usuario => usuario.userName === userName);
 
     if(findUser.password === password) {
         document.getElementById("idUsuarioNuevo").style.display = "none";
@@ -105,8 +102,7 @@ divFormularioInicioSesion.addEventListener('submit', (e) => {
         document.getElementById("idFormLogUsuario").style.display = "none";
         document.getElementById("idBotonLogSesion").style.display = "none";
         divEstadoLogInUsuario.innerHTML = `<div id="idEstadoLogInUsuario" class="alert alert-success " role="alert">
-        <p>Hola ${userName.toUpperCase()} has ingresado a tu portal de empleados</p></div>
-        `;
+        <p>Hola ${userName.toUpperCase()} has ingresado a tu portal de empleados</p></div>`;
     } 
         else {
             divFormularioInicioSesion.reset()
@@ -180,19 +176,19 @@ divFormularioInicioSesion.addEventListener('submit', (e) => {
     
     let divEmpleados = document.getElementById(`divEmpleados`);
     
-    empleados.forEach(empleadoEnArray => {
+    empleados.forEach(empleado => {
         divEmpleados.innerHTML += `
-        <div id="${empleadoEnArray.entidad}--empleado--${empleadoEnArray.id}" class="container-fluid ">
-        <p>Entidad: ${empleadoEnArray.entidad}</p>
-        <p>Activo: ${empleadoEnArray.activo}</p>
-        <p>CUIL: ${empleadoEnArray.cuil}</p>
-        <p>Apellido: ${empleadoEnArray.apellido}</p>
-        <p>Nombre: ${empleadoEnArray.nombre}</p>
-        <p>Puesto: ${empleadoEnArray.puesto}</p>
-        <p>Sniority: ${empleadoEnArray.seniority}</p>
-        <p>Sector: ${empleadoEnArray.sector}</p>
-        <p>Convenio Sindical: ${empleadoEnArray.convenioSindical}</p>
-        <p>Sueldo Básico: ${empleadoEnArray.sueldoBasico}</p>
+        <div id="${empleado.entidad}--empleado--${empleado.id}" class="container-fluid ">
+        <p>Entidad: ${empleado.entidad}</p>
+        <p>Activo: ${empleado.activo}</p>
+        <p>CUIL: ${empleado.cuil}</p>
+        <p>Apellido: ${empleado.apellido}</p>
+        <p>Nombre: ${empleado.nombre}</p>
+        <p>Puesto: ${empleado.puesto}</p>
+        <p>Sniority: ${empleado.seniority}</p>
+        <p>Sector: ${empleado.sector}</p>
+        <p>Convenio Sindical: ${empleado.convenioSindical}</p>
+        <p>Sueldo Básico: ${empleado.sueldoBasico}</p>
         </div>
         `
     });
