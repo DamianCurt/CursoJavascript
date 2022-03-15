@@ -74,9 +74,12 @@ divFormularioUsuarioNuevo.addEventListener('submit', (e) => {
         arrayUsers.push(usuario);
         localStorage.setItem('usuarios', JSON.stringify(arrayUsers));
         divFormularioUsuarioNuevo.reset();
-        divEstadoUsuario.innerHTML = `<div id="idEstadoUsuario" class="alert alert-success" role="alert">
-        <p>Usuario generado correctamente. Inicie sesión en su nómina.</p></div>
-        `;
+        Swal.fire({
+            title: 'Usuario generado correctamente',
+            icon: 'success',
+            text: 'Para comenzar inicie sesión',
+            confirmButtonText: 'Aceptar'
+          })
     } else {
         divEstadoUsuario.innerHTML = `<div id="idEstadoUsuario" class="alert alert-warning" role="alert">
     <p>Nombre de usuaio o mail existentes. Ingrese otros valores.</p></div>`;
@@ -95,6 +98,12 @@ divFormularioInicioSesion.addEventListener('submit', (e) => {
 
     const findUser = arrayUsers.find(usuario => usuario.userName === userName);
 
+    while (!findUser.password === password) {
+        divFormularioInicioSesion.reset()
+        divEstadoUsuario.innerHTML = `<div id="idEstadoLogInUsuario" class="alert alert-warning" role="alert">
+    <p>Usuaio o contraseña incorrectos. Vuelva a intentarlo.</p></div>`;;
+    }
+    
     if(findUser.password === password) {
         document.getElementById("idUsuarioNuevo").style.display = "none";
         document.getElementById("idBotonGenerarUsuario").style.display = "none";
