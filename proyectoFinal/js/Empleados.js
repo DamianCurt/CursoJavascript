@@ -171,6 +171,7 @@ divFormularioInicioSesion.addEventListener('submit', (e) => {
             }
         }
     }
+    
     const empleado1 = new Empleado(1, "Empresa1 SA", true, 12345678911, "Apellido1", "Nombre1", "Puesto1", "Seniority1", "Sector1", "Convenio Sindical1", 70000);
 
     const empleado2 = new Empleado(2, "Empresa1 SA", false, 11987654321, "Apellido2", "Nombre2", "Puesto2", "Seniority2", "Sector2", "Convenio Sindical2", 140000);
@@ -202,6 +203,34 @@ divFormularioInicioSesion.addEventListener('submit', (e) => {
         `
     });
 })
+
+let divNomina = document.getElementById('divNomina')
+
+async function obtenerNomina() {
+    const response = await fetch('./json/empleados.json')
+    return await response.json()
+}
+
+obtenerNomina().then(nomina => {
+    nomina.forEach((empleado) => {
+        divNomina.innerHTML += `
+            <div class="card border-primary mb-3" id="producto${empleado.id}" style="max-width: 20rem;">
+            <img src="./images/${empleado.foto}" class="card-img-top" alt="${empleado.apellidoNombre}">
+            <div class="card-header">${empleado.entidad}</div>
+            <div class="card-body">
+          <h4 class="card-title">${empleado.apellidoNombre}</h4>
+          <p class="card-text">Activo: ${empleado.activo}</p>
+          <p class="card-text"> CUIL: ${empleado.cuil}</p>
+          <p class="card-text"> puesto: ${empleado.puesto}</p>
+          <p class="card-text"> Seniority: ${empleado.seniority}</p>
+          <p class="card-text"> Sector: ${empleado.sector}</p>
+          <p class="card-text"> Convenio: ${empleado.convenio}</p>
+          <p class="card-text"> Sueldo básico: $${empleado.sueldoBasico}</p>
+          <button class="btn btn-dark" id="boton${empleado.id}">Editar</button>
+        </div>
+      </div>
+        `
+    })})
 
 /*
 const empleado1 = new Empleado(id, entidad, activo, apellido, nombre, puesto, seniority, sector, convenioSindical , sueldoBasico);

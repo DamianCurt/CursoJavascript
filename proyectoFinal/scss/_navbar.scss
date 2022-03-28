@@ -1,0 +1,19 @@
+.navbar__margin__top {
+    padding-top: 5rem;
+}
+
+.navbar--contratarServicio {
+    background-color: $greenColor;
+    color: $whiteColor;
+}
+
+.navbar--contratarServicio:hover {
+    background-color: $greenColor;
+    color: $whiteColor;
+    opacity: 70%;
+}
+
+#menuLogo {
+    height: 5rem;
+    width: 5rem;
+}

@@ -1,0 +1,41 @@
+[
+    {
+        "id": "1",
+        "foto": "12345678911.png",
+        "entidad": "Empresa SRL",
+        "apellidoNombre": "Gomez Carlos",
+        "activo": true,
+        "cuil": 12345678911,
+        "puesto": "Administrativo",
+        "seniority": "Junior",
+        "sector": "Administración",
+        "convenioLaboral": "Comercio",
+        "sueldoBasico": 80000
+    },
+    {
+        "id": "2",
+        "foto": "12345678912.png",
+        "entidad": "Empresa SRL",
+        "apellidoNombre": "Lopez Mario",
+        "activo": true,
+        "cuil": 12345678912,
+        "puesto": "Vendedor",
+        "seniority": "Semi senior",
+        "sector": "Ventas",
+        "convenioLaboral": "Comercio",
+        "sueldoBasico": 100000
+    },
+    {
+        "id": "3",
+        "foto": "12345678913.png",
+        "entidad": "Empresa SRL",
+        "apellidoNombre": "Martínez Carla",
+        "activo": true,
+        "cuil": 12345678913,
+        "puesto": "Coordinadora",
+        "seniority": "Senior",
+        "sector": "Ventas",
+        "convenioLaboral": "Comercio",
+        "sueldoBasico": 150000
+    }
+]

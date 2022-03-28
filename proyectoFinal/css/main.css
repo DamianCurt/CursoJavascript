@@ -1,0 +1,13 @@
+/*paleta de colores*/
+/*import*/
+.navbar__margin__top {
+  padding-top: 5rem; }
+
+.navbar--contratarServicio {
+  background-color: #324b3c;
+  color: #ffffff; }
+
+.navbar--contratarServicio:hover {
+  background-color: #324b3c;
+  color: #ffffff;
+  opacity: 70%; }
