@@ -5,9 +5,10 @@
 
 .navbar--contratarServicio {
   background-color: #324b3c;
+  opacity: 85%;
   color: #ffffff; }
 
 .navbar--contratarServicio:hover {
   background-color: #324b3c;
   color: #ffffff;
-  opacity: 70%; }
+  opacity: 105%; }

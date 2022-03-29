@@ -4,16 +4,12 @@
 
 .navbar--contratarServicio {
     background-color: $greenColor;
+    opacity: 85%;
     color: $whiteColor;
 }
 
 .navbar--contratarServicio:hover {
     background-color: $greenColor;
     color: $whiteColor;
-    opacity: 70%;
-}
-
-#menuLogo {
-    height: 5rem;
-    width: 5rem;
+    opacity: 105%;
 }
