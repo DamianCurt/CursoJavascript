@@ -1,7 +1,7 @@
 /*paleta de colores*/
 /*import*/
-.navbar__margin__top {
-  padding-top: 5rem; }
+.navbar__padding__top {
+  padding-top: 4.15rem; }
 
 .navbar--contratarServicio {
   background-color: #324b3c;
@@ -12,3 +12,6 @@
   background-color: #324b3c;
   color: #ffffff;
   opacity: 105%; }
+
+.img__min__height {
+  min-height: 8rem; }

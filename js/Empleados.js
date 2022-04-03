@@ -207,7 +207,7 @@ divFormularioInicioSesion.addEventListener('submit', (e) => {
 let divNomina = document.getElementById('divNomina')
 
 async function obtenerNomina() {
-    const response = await fetch('./json/empleados.json')
+    const response = await fetch('../json/empleados.json')
     return await response.json()
 }
 
@@ -215,7 +215,7 @@ obtenerNomina().then(nomina => {
     nomina.forEach((empleado) => {
         divNomina.innerHTML += `
             <div class="card border-primary mb-3" id="producto${empleado.id}" style="max-width: 20rem;">
-            <img src="./images/${empleado.foto}" class="card-img-top" alt="${empleado.apellidoNombre}">
+            <img src="../images/${empleado.foto}" class="card-img-top" alt="${empleado.apellidoNombre}">
             <div class="card-header">${empleado.entidad}</div>
             <div class="card-body">
           <h4 class="card-title">${empleado.apellidoNombre}</h4>
