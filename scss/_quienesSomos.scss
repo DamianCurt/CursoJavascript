@@ -1,0 +1,70 @@
+.quienesSomos__card {
+    box-shadow      : 0.3rem 0.3rem 2rem gray;
+    margin-bottom   : 1rem;
+    background-color: $greyColor;
+}
+
+.quienesSomos__card ul,li {
+    color: $whiteColor;
+}
+
+#quienesSomos--card--text--color {
+    color: $whiteColor;
+}
+
+.quienesSomos__card h2 {
+    padding: 2rem;
+}
+
+.quienesSomos--resaltado--blanco {
+    background-color: $whiteColor;
+    padding         : 0.75rem;
+    margin-top      : 0.5rem;
+    box-shadow: 0.15rem 0.15rem 0.7rem black;
+}
+
+.quienesSomos__card p {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+
+}
+
+#quienesSomos__card__list {
+    padding-bottom: 0rem;
+    margin-bottom: 0rem;
+    color: $whiteColor;
+}
+
+#quienesSomos--card--img--size {
+    height: 2rem;
+}
+
+.quienesSomos--text--style {
+    background-color: $whiteColor;
+    color           : $greenColor;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-weight: 500;
+}
+
+.quienesSomos__list {
+    list-style-type    : none;
+}
+
+.quienesSomos__cards__container__responsive {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin: 0rem auto;      
+    width: 95%;
+}
+
+@media (min-width: 768px) {
+    .quienesSomos__cards__container__responsive {
+        display:grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(2, auto);
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
+    }
+}

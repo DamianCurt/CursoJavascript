@@ -1,0 +1,20 @@
+.servicios__cards__grid {
+    padding-top: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    display: grid;
+    grid-template-areas:
+        "card--a"
+        "card--b"
+        "card--c";
+    grid-template-columns: 100%;
+    row-gap              : 2rem;
+}
+
+.card__background {
+    background: linear-gradient(to bottom, $greenColor, $greenGradient);
+}
+
+.card__header {
+    text-align: center;
+}

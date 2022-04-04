@@ -1,0 +1,20 @@
+.footer {
+    margin-top: 2rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.logos__dimension {
+    height: 3rem;
+}
+
+.logos--rrss {
+    display        : flex;
+    flex-direction : row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#italic {
+    font-style: italic;
+}
