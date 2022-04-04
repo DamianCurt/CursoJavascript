@@ -1,5 +1,6 @@
 /*paleta de colores*/
 $greenColor     : #324b3c;
+$greenButton    : #93c54b;
 $greenBorder    : #3b3834;
 $greenGradient  : #6e8d7b;
 $greyColor      : #49443f;
@@ -15,4 +16,5 @@ $whiteBoxShadow : #313131;
 @import "footer";
 @import "privacidad";
 @import "quienesSomos";
-@import "servicios"
+@import "servicios";
+@import "formConsulta"
