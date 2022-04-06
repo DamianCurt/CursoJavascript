@@ -1,0 +1,50 @@
+.formUsuarioNuevo {
+    padding-top  : 6.15rem;
+    margin-left  : 0.5rem;
+    margin-right : 0.5rem;
+    padding-left : 1rem;
+    padding-right: 1rem;
+    border-left  : $greenColor 0.1rem solid;
+    border-right : $greenColor 0.1rem solid;
+    border-bottom: $greenColor 0.1rem solid;
+
+}
+
+.formIniciarSesion {
+    margin-left               : 0.5rem;
+    margin-right              : 0.5rem;
+    padding-top               : 0rem;
+    padding-left              : 1rem;
+    padding-right             : 1rem;
+    border-right              : $greenColor 0.1rem solid;
+    border-left              : $greenColor 0.1rem solid;
+    border-bottom             : $greenColor 0.1rem solid;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.col-auto {
+    padding-bottom: 0.75rem;
+}
+
+@media (min-width: 576px) {
+    .formUsuarios__container__responsive {
+        display              : grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .formUsuarioNuevo {
+        margin-right: 0rem;
+        border-right              : $greenColor 0rem solid;
+        border-bottom-right-radius: 0rem;
+        border-bottom-left-radius: 1rem;
+    }
+
+    .formIniciarSesion {
+        padding-top: 6.15rem;
+        margin-left: 0rem;
+        border-left: $greenColor 0rem solid;
+        border-bottom-left-radius: 0rem;
+    }
+
+}

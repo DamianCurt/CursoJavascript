@@ -1,0 +1,38 @@
+.nomina__padding {
+    margin: auto 0rem;
+    padding-top: 6.15rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1.5rem;
+    
+}
+
+.bienvenidaUsuario {
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    background-color: $greenColor;
+    border-radius: 2rem;
+    color: $whiteColor;
+}
+
+@media (min-width: 576px) {
+    .listaEmpleados {
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .listaEmpleados {
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
+    }
+
+}
